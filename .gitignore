@@ -1,0 +1,18 @@
+# Entorno de Python
+**/__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.pytest_cache/
+
+# Variables de Entorno y Secretos
+.env
+.env.*
+!.env.example
+
+# Antigravity / IDE
+.gemini/
+.brain/
+
+# Archivos de build y lock locales
+*.log

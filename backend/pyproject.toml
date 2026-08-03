@@ -1,0 +1,23 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain-core>=1.5.3",
+    "langchain-google-genai>=4.3.2",
+    "langgraph>=1.2.10",
+    "pydantic-settings>=2.14.2",
+    "python-dotenv>=1.2.2",
+    "python-telegram-bot>=22.8",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+]
