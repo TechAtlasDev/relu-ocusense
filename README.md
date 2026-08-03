@@ -4,23 +4,7 @@
   <img src="https://res.cloudinary.com/de1xmnmeq/image/upload/v1785792488/Slide_4_3_-_1_1_p8daej.png" alt="Cardio Alerta Perú Banner" width="100%" />
 </p>
 
-<p align="center">
-  <img src="https://res.cloudinary.com/de1xmnmeq/image/upload/v1785792487/Slide_4_3_-_2_tk4vut.png" alt="ReLU Bot Logo" width="140" />
-</p>
-
 Repositorio oficial del proyecto **ReLU ⚡🤖**, un copiloto clínico asíncrono y asistente de tele-referencia desarrollado para la identificación oportuna de Cardiopatías Congénitas Críticas (CCC) en recién nacidos, adaptado a la altitud (m.s.n.m.) y a las realidades del primer nivel de atención en el Perú en colaboración con el **Instituto Nacional de Salud del Niño San Borja (INSN-SB)**.
-
----
-
-## 👥 Equipo Desarrollador
-
-<p align="center">
-  <a href="https://ocusense.tech/" target="_blank">
-    <img src="https://res.cloudinary.com/de1xmnmeq/image/upload/v1785792487/Slide_4_3_-_3_lgbctz.png" alt="OcuSense Team" width="100%" />
-  </a>
-</p>
-
-Desarrollado con pasión por el equipo de **[OcuSense](https://ocusense.tech/)**. Visita nuestra web oficial en **[ocusense.tech](https://ocusense.tech/)**.
 
 ---
 
@@ -76,3 +60,15 @@ Desarrollado con pasión por el equipo de **[OcuSense](https://ocusense.tech/)**
 │   └── pyproject.toml      # Gestión de dependencias con uv
 └── README.md               # Documentación principal del repositorio
 ```
+
+---
+
+## 👥 Equipo Desarrollador
+
+<p align="center">
+  <a href="https://ocusense.tech/" target="_blank">
+    <img src="https://res.cloudinary.com/de1xmnmeq/image/upload/v1785792487/Slide_4_3_-_3_lgbctz.png" alt="OcuSense Team" width="100%" />
+  </a>
+</p>
+
+Desarrollado con pasión por el equipo de **[OcuSense](https://ocusense.tech/)**. Visita nuestra web oficial en **[ocusense.tech](https://ocusense.tech/)**.
