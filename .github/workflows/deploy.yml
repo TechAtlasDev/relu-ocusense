@@ -45,6 +45,14 @@ jobs:
         if: success()
         uses: google-github-actions/setup-gcloud@v2
 
+      - name: Ensure Artifact Registry Repository Exists
+        if: success()
+        run: |
+          gcloud artifacts repositories create relu-repo \
+            --repository-format=docker \
+            --location=${REGION} \
+            --description="Repositorio Docker para ReLU Backend" || true
+
       - name: Authorize Docker Push to Artifact Registry
         if: success()
         run: gcloud auth configure-docker ${REGION}-docker.pkg.dev --quiet
