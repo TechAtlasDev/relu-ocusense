@@ -60,7 +60,7 @@ jobs:
       - name: Build and Push Docker Image
         if: success()
         env:
-          IMAGE_TAG: ${{ secrets.GCP_REGION || 'us-central1' }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/relu-repo/relu-backend:${{ github.sha }}
+          IMAGE_TAG: ${{ env.REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/relu-repo/relu-backend:${{ github.sha }}
         run: |
           docker build -t $IMAGE_TAG -f backend/Dockerfile .
           docker push $IMAGE_TAG
@@ -71,7 +71,7 @@ jobs:
         with:
           service: ${{ env.SERVICE_NAME }}
           region: ${{ env.REGION }}
-          image: ${{ secrets.GCP_REGION || 'us-central1' }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/relu-repo/relu-backend:${{ github.sha }}
+          image: ${{ env.REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/relu-repo/relu-backend:${{ github.sha }}
           env_vars: |
             TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}
             GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
