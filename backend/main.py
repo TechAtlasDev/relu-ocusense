@@ -90,12 +90,8 @@ async def telegram_webhook(request: Request) -> Response:
 def main() -> None:
     import uvicorn
 
-    if not settings.USE_WEBHOOK or not settings.WEBHOOK_URL:
-        logger.info("Iniciando bot en modo Polling (Local / Dev)...")
-        telegram_app.run_polling()
-    else:
-        logger.info(f"Iniciando servidor Uvicorn en el puerto {settings.PORT}...")
-        uvicorn.run(app, host="0.0.0.0", port=settings.PORT)
+    logger.info(f"Iniciando servidor Uvicorn en el puerto {settings.PORT}...")
+    uvicorn.run(app, host="0.0.0.0", port=settings.PORT)
 
 
 if __name__ == "__main__":
