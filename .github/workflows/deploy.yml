@@ -73,6 +73,7 @@ jobs:
           service: ${{ env.SERVICE_NAME }}
           region: ${{ env.REGION }}
           image: ${{ env.REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/relu-repo/relu-backend:${{ github.sha }}
+          flags: '--allow-unauthenticated'
           env_vars: |
             TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}
             GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
@@ -87,4 +88,5 @@ jobs:
           gcloud run services update ${{ env.SERVICE_NAME }} \
             --region=${{ env.REGION }} \
             --update-env-vars=WEBHOOK_URL=${SERVICE_URL}
+
 
