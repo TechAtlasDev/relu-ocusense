@@ -30,7 +30,7 @@ async def handle_llm_chat(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
     await context.bot.send_chat_action(chat_id=chat_id, action=ChatAction.TYPING)
 
     # Mensaje inicial temporal
-    sent_message = await update.message.reply_text("*Pensando...*", parse_mode=ParseMode.MARKDOWN)
+    sent_message = await update.message.reply_text("*Pensando\.\.\.*", parse_mode=ParseMode.MARKDOWN_V2)
 
     response_message = None
     last_update_text = ""
@@ -43,10 +43,10 @@ async def handle_llm_chat(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
             # Si se notifica el uso de una herramienta
             if isinstance(item, dict) and item.get("type") == "tool_used":
                 tool_used_name = item.get("tool_name")
-                tool_msg = f"⚙️ *ReLU utilizó la herramienta:* `{tool_used_name}`"
+                tool_msg = f"*ReLU utilizó la herramienta:* `{tool_used_name}`"
                 try:
                     # Transformamos el mensaje inicial "Pensando..." en la notificación de la herramienta utilizada
-                    await sent_message.edit_text(tool_msg, parse_mode=ParseMode.MARKDOWN)
+                    await sent_message.edit_text(tool_msg, parse_mode=ParseMode.MARKDOWN_V2)
                 except Exception:
                     pass
                 continue
@@ -58,7 +58,7 @@ async def handle_llm_chat(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
                 # Si se utilizó una herramienta, la respuesta de la IA debe ir en un mensaje nuevo después de la notificación
                 if tool_used_name and not response_message:
                     try:
-                        response_message = await update.message.reply_text("*Generando respuesta...*", parse_mode=ParseMode.MARKDOWN)
+                        response_message = await update.message.reply_text("*Generando respuesta\.\.\.*", parse_mode=ParseMode.MARKDOWN_V2)
                     except Exception:
                         response_message = sent_message
                 elif not response_message:
@@ -70,7 +70,7 @@ async def handle_llm_chat(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
                     if formatted != last_update_text:
                         try:
                             await context.bot.send_chat_action(chat_id=chat_id, action=ChatAction.TYPING)
-                            await response_message.edit_text(formatted, parse_mode=ParseMode.MARKDOWN)
+                            await response_message.edit_text(formatted, parse_mode=ParseMode.MARKDOWN_V2)
                             last_update_text = formatted
                             last_edit_time = now
                         except Exception:
@@ -80,7 +80,7 @@ async def handle_llm_chat(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
         final_formatted = sanitize_markdown(partial_text)
         if final_formatted and final_formatted != last_update_text:
             try:
-                await target_msg.edit_text(final_formatted, parse_mode=ParseMode.MARKDOWN)
+                await target_msg.edit_text(final_formatted, parse_mode=ParseMode.MARKDOWN_V2)
             except Exception:
                 try:
                     # Fallback si Telegram rechaza sintaxis de Markdown compleja
