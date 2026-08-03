@@ -75,9 +75,9 @@ async def telegram_webhook(request: Request) -> Response:
     try:
         data = await request.json()
         update = Update.de_json(data, telegram_app.bot)
-        # Procesar en segundo plano para responder 200 OK a Telegram inmediatamente
-        import asyncio
-        asyncio.create_task(telegram_app.process_update(update))
+        # Procesar de forma síncrona: la CPU de Cloud Run permanece activa
+        # durante todo el procesamiento del LLM antes de retornar 200 OK.
+        await telegram_app.process_update(update)
         return Response(status_code=status.HTTP_200_OK)
     except Exception as exc:
         logger.exception("Error procesando actualización de Webhook: %s", exc)
