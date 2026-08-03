@@ -1,6 +1,26 @@
 # ⚡ ReLU - Backend Bot Telegram (Cardio Alerta Perú - INSN-SB)
 
-Backend del bot de Telegram **ReLU ⚡🤖**, un copiloto clínico asíncrono y asistente de tele-referencia desarrollado para el tamizaje oportuno de Cardiopatías Congénitas Críticas (CCC) en recién nacidos, adaptado a la altitud y realidades del primer nivel de atención en el Perú.
+<p align="center">
+  <img src="https://res.cloudinary.com/de1xmnmeq/image/upload/v1785792488/Slide_4_3_-_1_1_p8daej.png" alt="Cardio Alerta Perú Banner" width="100%" />
+</p>
+
+<p align="center">
+  <img src="https://res.cloudinary.com/de1xmnmeq/image/upload/v1785792487/Slide_4_3_-_2_tk4vut.png" alt="ReLU Bot Logo" width="140" />
+</p>
+
+Backend del bot de Telegram **ReLU ⚡🤖**, un copiloto clínico asíncrono y asistente de tele-referencia desarrollado para el tamizaje oportuno de Cardiopatías Congénitas Críticas (CCC) en recién nacidos, adaptado a la altitud y realidades del primer nivel de atención en el Perú en alianza estratégica con el **INSN-San Borja**.
+
+---
+
+## 👥 Equipo Desarrollador
+
+<p align="center">
+  <a href="https://ocusense.tech/" target="_blank">
+    <img src="https://res.cloudinary.com/de1xmnmeq/image/upload/v1785792487/Slide_4_3_-_3_lgbctz.png" alt="OcuSense Team" width="100%" />
+  </a>
+</p>
+
+Desarrollado con pasión por el equipo de **[OcuSense](https://ocusense.tech/)**. Visita nuestra web oficial en **[ocusense.tech](https://ocusense.tech/)**.
 
 ---
 
@@ -53,11 +73,11 @@ backend/
 │   ├── services/
 │   │   ├── agent.py      # Grafo de estados LangGraph y System Prompt de ReLU
 │   │   └── llm.py        # Servicio de streaming LLM asíncrono
-│   ├── tools/            # Herramientas ReAct (Calculadora, Hora, etc.)
+│   ├── tools/            # Herramientas ReAct (Tamizaje, Referencia SIS, etc.)
 │   └── utils/            # Formateador sanitizado de Markdown
-├── docs/                 # Documentación técnica específica del proyecto
-│   └── cardio_alerta_fase1.md
+├── docs/                 # Documentación técnica del proyecto
 ├── tests/                # Suite de pruebas unitarias con pytest
+├── Dockerfile            # Contenedor optimizado para Cloud Run
 ├── main.py               # Punto de entrada principal
 └── pyproject.toml        # Configuración de dependencias con uv
 ```
