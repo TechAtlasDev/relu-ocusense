@@ -33,8 +33,7 @@ jobs:
       - name: Run Pytest Suite
         run: |
           cd backend
-          uv pip install --system -e .[dev]
-          pytest
+          uv run pytest
 
       - name: Authenticate to Google Cloud
         if: success()
