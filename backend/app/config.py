@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     GEMINI_API_KEY: str | None = None
     GOOGLE_API_KEY: str | None = None
     GEMINI_MODEL: str = "gemini-3.6-flash"
+    PORT: int = 8080
     LOG_LEVEL: str = "INFO"
     ENVIRONMENT: str = "development"
 

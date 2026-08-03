@@ -1,5 +1,6 @@
 import logging
 from app.core.bot import create_app
+from app.core.health import start_health_server
 from app.config import settings
 
 def main() -> None:
@@ -15,6 +16,9 @@ def main() -> None:
         logging.getLogger("httpx").setLevel(logging.WARNING)
         logging.getLogger("httpcore").setLevel(logging.WARNING)
         logging.getLogger("google_genai").setLevel(logging.WARNING)
+
+    logger.info(f"Iniciando servidor de health check en el puerto {settings.PORT}...")
+    start_health_server(port=settings.PORT)
 
     logger.info(f"Iniciando el bot de Telegram (LOG_LEVEL={settings.LOG_LEVEL})...")
 
