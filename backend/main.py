@@ -45,11 +45,6 @@ async def lifespan(app: FastAPI):
     yield
 
     logger.info("Deteniendo aplicación de Telegram...")
-    if settings.USE_WEBHOOK and settings.WEBHOOK_URL:
-        try:
-            await telegram_app.bot.delete_webhook()
-        except Exception as exc:
-            logger.warning(f"No se pudo eliminar el webhook: {exc}")
     await telegram_app.stop()
     await telegram_app.shutdown()
 
