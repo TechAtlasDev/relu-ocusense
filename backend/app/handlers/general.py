@@ -1,5 +1,6 @@
 import asyncio
 import logging
+import time
 from telegram import Update
 from telegram.constants import ChatAction, ParseMode
 from telegram.ext import ContextTypes, MessageHandler, filters
@@ -34,7 +35,7 @@ async def handle_llm_chat(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
     response_message = None
     last_update_text = ""
     partial_text = ""
-    chunk_counter = 0
+    last_edit_time = 0.0
 
     try:
         tool_used_name = None
@@ -63,14 +64,15 @@ async def handle_llm_chat(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
                 elif not response_message:
                     response_message = sent_message
 
-                chunk_counter += 1
-                if chunk_counter % 5 == 0:
+                now = time.time()
+                if now - last_edit_time >= 1.5:
                     formatted = sanitize_markdown(partial_text)
                     if formatted != last_update_text:
                         try:
                             await context.bot.send_chat_action(chat_id=chat_id, action=ChatAction.TYPING)
                             await response_message.edit_text(formatted, parse_mode=ParseMode.MARKDOWN)
                             last_update_text = formatted
+                            last_edit_time = now
                         except Exception:
                             pass
 

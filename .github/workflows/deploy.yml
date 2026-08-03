@@ -66,6 +66,7 @@ jobs:
           docker push $IMAGE_TAG
 
       - name: Deploy to Cloud Run
+        id: deploy
         if: success()
         uses: google-github-actions/deploy-cloudrun@v2
         with:
@@ -75,3 +76,15 @@ jobs:
           env_vars: |
             TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}
             GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
+            USE_WEBHOOK=true
+            WEBHOOK_SECRET_TOKEN=${{ secrets.WEBHOOK_SECRET_TOKEN }}
+
+      - name: Set WEBHOOK_URL in Cloud Run
+        if: success()
+        run: |
+          SERVICE_URL="${{ steps.deploy.outputs.url }}"
+          echo "Configurando WEBHOOK_URL=${SERVICE_URL} en Cloud Run..."
+          gcloud run services update ${{ env.SERVICE_NAME }} \
+            --region=${{ env.REGION }} \
+            --update-env-vars=WEBHOOK_URL=${SERVICE_URL}
+

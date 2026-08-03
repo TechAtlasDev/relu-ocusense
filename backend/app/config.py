@@ -9,6 +9,10 @@ class Settings(BaseSettings):
     PORT: int = 8080
     LOG_LEVEL: str = "INFO"
     ENVIRONMENT: str = "development"
+    WEBHOOK_URL: str | None = None
+    WEBHOOK_PATH: str = "/webhook"
+    WEBHOOK_SECRET_TOKEN: str | None = None
+    USE_WEBHOOK: bool = True
 
 
     model_config = SettingsConfigDict(
