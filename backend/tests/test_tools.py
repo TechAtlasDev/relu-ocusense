@@ -16,12 +16,13 @@ def test_get_current_time_tool():
 
 def test_get_all_tools_registration():
     tools = get_all_tools()
-    assert len(tools) == 5
+    assert len(tools) == 8
     names = [t.name for t in tools]
     assert "calculate_expression" in names
     assert "get_current_time" in names
-    assert "evaluar_tamizaje_oximetria" in names
-    assert "emitir_alerta_teleinterconsulta_insn" in names
-    assert "generar_ficha_referencia_sis" in names
-
-
+    assert "evaluar_desarrollo_infantil" in names
+    assert "emitir_referencia_neurodesarrollo" in names
+    assert "generar_ficha_fua_neurodesarrollo" in names
+    assert "programar_seguimiento_cita" in names
+    assert "obtener_plan_refuerzo_hogar" in names
+    assert "generar_resumen_caso_multidisciplinario" in names
